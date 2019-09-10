@@ -1,0 +1,9 @@
+body{text-align:center;}
+canvas{box-shadow:0 0 10px #000;margin-top:30px;}
+.mainmenu{text-align:center;width:100%;}
+.mainmenu a{color:black;font-size:36px;text-decoration:none;
+font-family:Verdana;font-weight:bolder;cursor:pointer;}
+table{margin-left:400px;width:50%;margin-top:50px;color:black;font-size:36px;text-decoration:none;
+font-family:Verdana;font-weight:bolder;cursor:pointer;text-align:center;}
+.mainmenu a:hover{color:green;}
+.mainmenu .title{font-family:Verdana;font-size:50px;font-weight:bolder;color:red;}

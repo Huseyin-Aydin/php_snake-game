@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Snake Game v1.0</title>
+<link rel="stylesheet" href="./dist/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<style>
+	.modal{text-align:center !important;background-color:black !important;}
+	.colorPicker{margin-left:50px;}
+	.save{position:absolute;margin-left:150px;margin-top:-30px;font-family:Verdana;font-size:24px;background:black;color:white;}
+	.close-modal{display:none !important;}
+</style>
+</head>
+<body>
+<div class="mainmenu">
+	<span class="title">SETTINGS</span><br />
+	<a href="#" title="game_background_color" class="setting">Game Background Color</a><br />
+	<a href="#" title="main_background_color" class="setting">Main Background Color</a><br />
+	<a href="#" title="scoreboard_color" class="setting">Scoreboard Color</a><br />
+	<a href="#" title="text_hover_color" class="setting">Text Hover Color</a><br />
+	<a href="#" title="text_color" class="setting">Text Color</a><br />
+	<a href="#" title="snake_color" class="setting">Snake Color</a><br />
+	<a href="#" title="food_color" class="setting">Food Color</a><br />
+	<a style="position:fixed;bottom:0;left:0;" href="./index.php">MAIN MENU</a>
+</div>
+<div id="iro-color" class="modal">
+<div class="colorPicker"></div>
+	<a href="#close-modal" rel="modal:close"><button class="save">SAVE</button></a>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script type="text/javascript" src="./dist/iro.min.js"></script>
+<script type="text/javascript" src="./dist/settings.js"></script>
+<script>
+function json_title_control(current_setting,json_setting){var color="#FF0000";
+	for(var k in json_setting){
+   		if(k==current_setting) color=json_setting[k];
+	}
+	return color;
+}
+var settings="";
+$(".setting").attr("href","#iro-color");$(".setting").attr("rel","modal:open");
+var current_color="";
+var current_setting="";
+$(".setting").click(function()
+{
+	if(document.getElementsByClassName("iro__colorPicker").length>0) $(".colorPicker").html("");
+	window.current_setting=this.getAttribute("title");
+	window.current_color=json_title_control(window.current_setting,window.json_setting);
+	var colorPicker = new iro.ColorPicker(".colorPicker", {
+  width: 280,
+  color:window.current_color,
+  borderWidth: 1,
+  borderColor: "#fff" });
+var values = document.getElementById("values");
+colorPicker.on(["color:init", "color:change"], function (color)
+{//color.hexString,color.rgb,color.hslString
+window.current_color=color.hexString;
+});
+});
+$(".save").click(function(){$.post("./change_settings.php",{"title":window.current_setting,"color":window.current_color},function(data){
+window.open("./?page=settings","_self");
+});
+});
+</script>
+</body>
+</html>

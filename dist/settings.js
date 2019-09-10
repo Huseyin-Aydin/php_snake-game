@@ -1,0 +1,3 @@
+$.post('./getsettings.php',{"get":true},function(data){
+	window.json_setting=JSON.parse(data);
+	document.getElementsByTagName("head")[0].innerHTML+='<style type="text/css">body{background-color:'+window.json_setting.main_background_color+';color:'+window.json_setting.text_color+';}.mainmenu a{color:'+window.json_setting.text_color+';}.mainmenu a:hover{color:'+window.json_setting.text_hover_color+'}</style>';});

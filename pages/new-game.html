@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="utf-8" />
+<title>Snake Game v1.0</title>
+<link rel="stylesheet" href="./dist/style.css">
+<style>
+	.turnback{margin-top:20px;}	
+	.turnback button{
+		background-color:black;
+		color:white;
+		font-size:37px;
+		border-color:white;
+		font-family:Verdana;
+		cursor:pointer;
+	}
+</style>
+</HEAD>
+<BODY>
+<canvas id="canvas" width="450" height="450"></canvas>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="./dist/touchSwipe.min.js"></script>
+<script type="text/javascript" src="./dist/core.js"></script>
+<script type="text/javascript" src="./dist/settings.js"></script>
+	<div class="turnback">
+		<button onclick="window.open('./index.php','_self')">MAIN MENU</button>
+		<button onclick="window.open('./?page=settings','_self')">SETTINGS</button>
+	</div>
+</BODY>
+</HTML>
